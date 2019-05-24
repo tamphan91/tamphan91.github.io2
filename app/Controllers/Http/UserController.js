@@ -15,34 +15,31 @@ class UserController {
    * @param {Response} ctx.response
    */
     async store ({ request, response, auth }) {
-        const data = request.only(['fullname', 'username', 'password'])
+        const data = request.only(['firstname', 'lastname', 'email', 'password'])
         const user = await User.create(data)
         const authData = await auth.generate(user, true)
 
         Mail.send('emails.welcome', user.toJSON(), (message) => {
             message
               .to(user.email)
-              .from(Env.get('MAIL_USERNAME'), 'TP-Shop')
-              .subject('Welcome to TP-Shop')
+              .from(Env.get('MAIL_USERNAME'), 'TAPHA')
+              .subject('Welcome to TAPHA')
         })
 
-        return response.send({username: user.username,
-             email: user.email, token: authData.token})
+        return response.send({email: user.email,
+             token: authData.token, firstname: user.firstname, lastname: user.lastname})
     }
 
     async login ({ auth, request, response }) {
         const { email, password } = request.all()
         let data = await auth.attempt(email, password, true)
+        console.log('data', auth);
         const user = await User.query()
             .where('email', email)
-            .select(['username', 'email'])
+            .select(['email', 'firstname', 'lastname'])
             .first()
         user.token = data.token
         return response.send(user)
-    }
-
-    async logout({ auth, request, response }){
-        return await auth.logout()
     }
 
     async index ({ auth, request, response }) {

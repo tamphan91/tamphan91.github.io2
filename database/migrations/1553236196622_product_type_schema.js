@@ -12,7 +12,8 @@ class ProductTypeSchema extends Schema {
       table.string('title1')
       table.string('title2')
       table.string('url')
-      table.timestamps()
+      table.timestamp('created_at').defaultTo(this.fn.now())
+      table.timestamp('updated_at').defaultTo(this.fn.now())
       table.integer('product_type_id').unsigned().references('id').inTable('product_types')
     })
   }

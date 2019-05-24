@@ -18,7 +18,6 @@ class User extends Model {
       if (userInstance.dirty.password) {
         userInstance.password = await Hash.make(userInstance.password)
       }
-      userInstance.email = userInstance.username
     })
   }
 

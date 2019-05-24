@@ -46,10 +46,10 @@ Route.group(() => {
     Route.delete('/users/:id', 'UserController.delete')
     Route.get('/users/:id', 'UserController.show').middleware('auth')
     Route.post('/login', 'UserController.login').middleware('guest')
-    Route.get('/logout', 'UserController.logout').middleware('auth')
 
     // Mail
     Route.post('/mail/subscribe', 'MailController.subscribe')
+    Route.post('/mail/checkout', 'MailController.checkout')
     Route.post('/test', 'MailController.test')
     Route.get('/mail', 'MailController.index')
 }).prefix('api')

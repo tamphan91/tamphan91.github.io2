@@ -1,0 +1,69 @@
+
+<h2 style="text-align: center">TAPHA</h2><br>
+<h3 style="text-align: center">THANK YOU FOR ORDER!</h3>
+<p style="text-align: center">
+  GET YOUR CLOSET READY. WE'LL EMAIL YOU AGAIN WHEN YOUR ORDER SHIPS. YOUR ORDER COULD SHIP IN MUTIPLE PACKAGES.
+</p>
+
+<table width="100%" style="background-color: #fff2e6">
+  <tr>
+    <th colspan="2" style="background-color: #e67300">SHIP TO:</th>
+  </tr>
+
+  <tr>
+    <th colspan="2">
+      {{firstname}} {{lastname}}<br>
+      {{address}}
+    </th>
+  </tr>
+
+  <tr>
+    <th colspan="2" style="background-color: #e67300">PROCESSING</th>
+  </tr>
+
+  @each((item, i) in items)
+    <tr>
+        <td width="50%">
+        <img width="100%" src="{{item.url}}">
+        </td>
+        <td style="vertical-align: top;">
+        {{item.name}}<br>
+        Size: {{item.size}}<br>
+        Color: {{item.color}}<br>
+        Price: {{item.price}} USD<br>
+        Quantity: {{item.quantity}}<br>
+        </td>
+    </tr>
+  @endeach
+
+  <tr>
+    <th colspan="2" style="background-color: #e67300">SUMMARY</th>
+  </tr>
+
+  <tr>
+    <td>
+    Subtotal
+    </td>
+    <td style="text-align: right;">
+    {{subTotal}} USD
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+    Shipping & Handling
+    </td>
+    <td style="text-align: right;">
+    5 USD
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+    Order Total
+    </td>
+    <td style="text-align: right;">
+    {{subTotal + 5}} USD
+    </td>
+  </tr>
+</table>
