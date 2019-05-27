@@ -17,7 +17,7 @@ class MailController {
             message
                 .to(data.email)
                 .from(Env.get('MAIL_USERNAME'), 'TAPHA')
-                .subject('THANK YOU FOR YOUR SUBSCRIBING')
+                .subject("Congratulations - you're a subscriber to TAPHA")
         })
 
         return response.send({message:'subscribing successfully!!!'})
