@@ -16,7 +16,7 @@ module.exports = {
   | Function - Receives the current origin and should return one of the above values.
   |
   */
-  origin: 'https://tp-shop.herokuapp.com,https://tamphan91.github.io,http://192.168.1.59:4200,http://localhost:4200',
+  origin: 'https://tp-shop.herokuapp.com,https://tamphan91.github.io,http://192.168.1.59:4200,http://localhost:4200,http://192.168.1.59',
 
   /*
   |--------------------------------------------------------------------------
